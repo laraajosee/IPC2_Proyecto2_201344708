@@ -1,1 +1,4 @@
-print("hola mundo")
+from tkinter import *
+
+raiz = Tk()
+raiz.mainloop()
