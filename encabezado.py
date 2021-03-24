@@ -1,2 +1,2 @@
-from no
+from nodos import Nodo, nodoEncabezado
 
