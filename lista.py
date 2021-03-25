@@ -17,5 +17,6 @@ class ListaEnlazada:
     def mostrarMatriz(self):
         tmp = self.inicio
         while tmp is not None:
-            print('Nombre Matriz: '+ str(tmp.nombre)+' filas: '+ str(tmp.filas)+ ' columnas: '+ str(tmp.columnas+'\n imagen: '+ str(tmp.imagen)))
+            print('Nombre Matriz: '+ str(tmp.nombre)+' filas: '+ str(tmp.filas)+ ' columnas: '+ str(tmp.columnas)+'\n imagen: ')
+            tmp.imagen.recorrerFilas()
             tmp = tmp.siguiente
