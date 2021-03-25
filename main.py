@@ -2,7 +2,9 @@ from tkinter import *
 from tkinter.filedialog import askopenfilename
 import xml.etree.ElementTree as ET
 from matriz import matriz
+from lista import ListaEnlazada
 
+lista = ListaEnlazada()
 
 def abrir():
 
@@ -11,12 +13,24 @@ def abrir():
     root = tree.getroot()
 
     
-  
-    for elemento in root: 
-        for subelemento in elemento:
-            if(subelemento.tag == 'nombre'):
-                print(subelemento.tag)
-
+    for elemento in root:
+     
+       # print(elemento.tag) #tag
+     for subelemento in elemento:
+            print('> ' + subelemento.text) #valores -> text
+            if subelemento.tag == 'nombre':
+                nombre = subelemento.text
+            if subelemento.tag == 'filas':
+                filas = subelemento.text
+            if subelemento.tag == 'columnas':
+                columnas = subelemento.text
+            if subelemento.tag == 'imagen':
+                imagen = subelemento.text
+     analizarImagen(imagen)
+     lista.insertar(nombre,filas,columnas,imagen)        
+ 
+    
+    #lista.mostrarMatriz()
     n = matriz()
     n.insertar(1,1,"carlos")
     n.insertar(1,2,"asd")
@@ -24,12 +38,19 @@ def abrir():
     n.insertar(2,2,"pedro")
     n.insertar(2,1,"richar")
     n.insertar(8,8,"Agustin")
-    n.recorrerFilas()
-    n.recorrerColumnas()
+    #n.recorrerFilas()
+    #n.recorrerColumnas()
 
-         
-         
-         
+def analizarImagen(imagen):
+         print("imprimiendo imagen "+ imagen)
+         contador = 0
+         for n in imagen:
+            if(n == ' '):
+                print('espacion en blanco encontrado')
+            if(n == '*'):
+             print('asterisco encontrado')
+            if(n == '-'):
+             print('cosooooooo encontrado')
                    
     
 

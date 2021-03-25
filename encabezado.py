@@ -8,19 +8,18 @@ class listaEncabezado:
         if self.primero == None:
             self.primero = nuevo
         elif nuevo.id < self.primero.id:
-             nuevo.siguiente - self.primero
+             nuevo.siguiente = self.primero
              self.primero.anterior = nuevo
-             self.primero - nuevo
+             self.primero = nuevo
         else:
             actual = self.primero
             while actual.siguiente != None:
                 if nuevo.id < actual.siguiente.id:
-                    nuevo.siguiente - actual.siguiente
+                    nuevo.siguiente = actual.siguiente
                     actual.siguiente.anterior = nuevo
                     nuevo.anterior = actual
                     actual.siguiente = nuevo
                     break
-
                 actual = actual.siguiente    
             
             if actual.siguiente == None:
