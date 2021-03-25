@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter.filedialog import askopenfilename
 import xml.etree.ElementTree as ET
+from matriz import matriz
+
 
 def abrir():
 
@@ -14,6 +16,17 @@ def abrir():
         for subelemento in elemento:
             if(subelemento.tag == 'nombre'):
                 print(subelemento.tag)
+
+    n = matriz()
+    n.insertar(1,1,"carlos")
+    n.insertar(1,2,"asd")
+    n.insertar(1,3,"caca")
+    n.insertar(2,2,"pedro")
+    n.insertar(2,1,"richar")
+    n.insertar(8,8,"Agustin")
+    n.recorrerFilas()
+    n.recorrerColumnas()
+
          
          
          
