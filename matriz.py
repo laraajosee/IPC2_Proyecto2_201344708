@@ -15,11 +15,13 @@ class matriz:
             eFila = nodoEncabezado(fila)
             eFila.accesoNodo = nuevo
             self.eFilas.setEncabezado(eFila)
+            
         else:
             if nuevo.columna < eFila.accesoNodo.columna:
                 nuevo.derecha = eFila.accesoNodo
                 eFila.accesoNodo.izquierda = nuevo
                 eFila.accesoNodo = nuevo
+                
             else:
                 actual = eFila.accesoNodo
                 while actual.derecha != None:
@@ -30,10 +32,12 @@ class matriz:
                         actual.derecha = nuevo
                         break
                     actual = actual.derecha
+                    
 
                 if actual.derecha == None: 
                     actual.derecha = nuevo
                     nuevo.izquierda = actual
+                    
 
     def recorrerFilas(self):
         eFila = self.eFilas.primero   

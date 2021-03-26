@@ -8,12 +8,37 @@ class ListaEnlazada:
         nuevo = Nodo(nombre, filas,columnas,imagen)
         if self.inicio is None:
             self.inicio = nuevo
+            return nuevo
         else:
             tmp = self.inicio
             while tmp.siguiente is not None:
                 tmp = tmp.siguiente
             tmp.siguiente = nuevo
+        return nuevo
 
+    def insertarFinal(self,nombre, filas,columnas,imagen):
+        nuevo = Nodo(nombre, filas,columnas,imagen)
+        if self.inicio is None:
+            self.inicio = nuevo
+            return nuevo
+        else:
+            tmp = self.inicio
+            while tmp.siguiente is not None:
+                tmp = tmp.siguiente
+            tmp.siguiente = nuevo
+            nuevo.anterior = tmp
+            return nuevo
+        return None
+
+    def getNodo(self, valor):
+        tmp = self.inicio
+        while tmp is not None:
+            if str.lower(tmp.nombre) == str.lower(valor):
+                return tmp
+            tmp = tmp.siguiente
+        return None
+
+        
     def mostrarMatriz(self):
         tmp = self.inicio
         while tmp is not None:

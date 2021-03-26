@@ -5,6 +5,13 @@ from matriz import matriz
 from lista import ListaEnlazada
 
 lista = ListaEnlazada()
+n = matriz()
+n.insertar(1,1,"carlos")
+n.insertar(1,2,"pedro")
+n.insertar(1,4,"anibal")
+n.insertar(1,5,"fer")
+  
+
 
 def abrir():
 
@@ -26,31 +33,27 @@ def abrir():
                 columnas = subelemento.text
             if subelemento.tag == 'imagen':
                 imagen = subelemento.text
-     analizarImagen(imagen)
-     lista.insertar(nombre,filas,columnas,imagen)        
+     #nodoAnalizar = analizarImagen(imagen)
+     nodo = lista.insertarFinal(nombre,filas,columnas,n)
+     nodo.imagen = n        
  
-    
-    #lista.mostrarMatriz()
-    n = matriz()
-    n.insertar(1,1,"carlos")
-    n.insertar(1,2,"asd")
-    n.insertar(1,3,"caca")
-    n.insertar(2,2,"pedro")
-    n.insertar(2,1,"richar")
-    n.insertar(8,8,"Agustin")
-    #n.recorrerFilas()
-    #n.recorrerColumnas()
+    lista.mostrarMatriz() 
 
 def analizarImagen(imagen):
+         contadorColumnas = 0
+         contadorFilas = 0
          print("imprimiendo imagen "+ imagen)
-         contador = 0
-         for n in imagen:
-            if(n == ' '):
-                print('espacion en blanco encontrado')
-            if(n == '*'):
-             print('asterisco encontrado')
-            if(n == '-'):
-             print('cosooooooo encontrado')
+         for k in imagen:
+            if(k == '-'):
+                #print("- encontrado")
+                contadorColumnas = contadorColumnas + 1
+                #print("columna: "+ str(contadorColumnas))
+                #print("fila: "+ str(contadorFilas))
+                
+
+         return n       
+               
+                
                    
     
 
