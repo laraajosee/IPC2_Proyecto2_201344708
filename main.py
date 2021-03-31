@@ -6,10 +6,7 @@ from lista import ListaEnlazada
 
 lista = ListaEnlazada()
 n = matriz()
-n.insertar(1,1,"carlos")
-n.insertar(1,2,"pedro")
-n.insertar(1,4,"anibal")
-n.insertar(1,5,"fer")
+
   
 
 
@@ -33,29 +30,29 @@ def abrir():
                 columnas = subelemento.text
             if subelemento.tag == 'imagen':
                 imagen = subelemento.text
-     #nodoAnalizar = analizarImagen(imagen)
-     nodo = lista.insertarFinal(nombre,filas,columnas,n)
+                contadorColumnas = 0
+                contadorFilas = 0
+                for k in imagen:
+                    if(k == '-'):
+                        n.insertar(contadorFilas,contadorColumnas,'-')
+                        contadorColumnas = contadorColumnas +1
+                        
+                    if(k == '*'):
+                        n.insertar(contadorFilas,contadorColumnas,'*')
+                        contadorColumnas = contadorColumnas +1
+                        
+                    if(k == '\n'):
+                        contadorFilas = contadorFilas +1
+                        contadorColumnas = 1
+                       
+                    
+     
+     nodo = lista.insertarFinal(nombre,filas,columnas,"")
      nodo.imagen = n        
  
     lista.mostrarMatriz() 
-
-def analizarImagen(imagen):
-         contadorColumnas = 0
-         contadorFilas = 0
-         print("imprimiendo imagen "+ imagen)
-         for k in imagen:
-            if(k == '-'):
-                #print("- encontrado")
-                contadorColumnas = contadorColumnas + 1
-                #print("columna: "+ str(contadorColumnas))
-                #print("fila: "+ str(contadorFilas))
-                
-
-         return n       
                
-                
-                   
-    
+              
 
 
 # Configuración de la raíz

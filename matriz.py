@@ -49,7 +49,7 @@ class matriz:
             print("\nfila"+str(actual.fila))
             print("columna   valor  ")
             while actual != None:
-                print(str(actual.columna)+"      "+ actual.valor)
+                print(str(actual.columna)+"            "+ actual.valor)
                 actual = actual.derecha
 
             eFila = eFila.siguiente
