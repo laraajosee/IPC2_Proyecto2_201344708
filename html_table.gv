@@ -1,0 +1,7 @@
+graph html_table {
+	tab [label=<<TABLE>+"
+<TR>"+"
+<TD>left</TD>"+"
+</TR>"+
+</TABLE>>]
+}
