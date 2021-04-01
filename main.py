@@ -58,13 +58,17 @@ def abrir():
 # Configuración de la raíz
 raiz = Tk()
 imagen = PhotoImage(file="prueva.png")
-mi_Frame = Frame(raiz, width=800, height=500)
+mi_Frame = Frame(raiz, width=1000, height=1000)
 mi_Frame.pack()
-mi_Label = Label(mi_Frame, text="Metodo place")
-mi_Label.place(x=70, y=10)
-label1 = Label(mi_Frame, text="hola",image=imagen)
+#mi_Label = Label(mi_Frame, text="Metodo place")
+#mi_Label.place(x=70, y=10)
+label1 = Label(mi_Frame, text="hola",bg= "green")
 label1.place(x=5, y=50)
-label1.config(padx=20,pady=20)
+label1.config(padx=125,pady=125)
+
+label2 = Label(mi_Frame, text="hola",bg= "green")
+label2.place(x=350, y=50)
+label2.config(padx=100,pady=100)
 
 
 
@@ -92,8 +96,8 @@ menubar.add_cascade(label="Cargar Archivo", menu=filemenu, command=abrir)
 menubar.add_cascade(label="Operaciones", menu=editmenu)
 menubar.add_cascade(label="Reportes", menu=helpmenu)
 menubar.add_cascade(label="Ayuda", menu=helpmenu)
-ancho_ventana = 900
-alto_ventana = 500
+ancho_ventana = 1500
+alto_ventana = 800
 
 x_ventana = raiz.winfo_screenwidth() // 2 - ancho_ventana // 2
 y_ventana = raiz.winfo_screenheight() // 2 - alto_ventana // 2
