@@ -3,9 +3,11 @@ from tkinter.filedialog import askopenfilename
 import xml.etree.ElementTree as ET
 from matriz import matriz
 from lista import ListaEnlazada
+from tkinter import ttk
 
 lista = ListaEnlazada()
 n = matriz()
+##cadena = ""
 
   
 
@@ -49,8 +51,14 @@ def abrir():
      
      nodo = lista.insertarFinal(nombre,filas,columnas,"")
      nodo.imagen = n        
- 
-    lista.mostrarMatriz() 
+    
+    cadena = lista.listaCombobox()
+    comboExample = ttk.Combobox(raiz, 
+                            values=[cadena])
+    comboExample.place(x=50, y=100)
+    comboExample.current(1)
+    lista.mostrarMatriz()
+    
                
               
 
@@ -58,18 +66,23 @@ def abrir():
 # Configuración de la raíz
 raiz = Tk()
 imagen = PhotoImage(file="prueva.png")
-mi_Frame = Frame(raiz, width=1000, height=1000)
+mi_Frame = Frame(raiz, width=1500, height=1500)
 mi_Frame.pack()
 #mi_Label = Label(mi_Frame, text="Metodo place")
 #mi_Label.place(x=70, y=10)
 label1 = Label(mi_Frame, text="hola",bg= "green")
-label1.place(x=5, y=50)
+label1.place(x=50, y=125)
 label1.config(padx=125,pady=125)
 
 label2 = Label(mi_Frame, text="hola",bg= "green")
-label2.place(x=350, y=50)
-label2.config(padx=100,pady=100)
+label2.place(x=500, y=125)
+label2.config(padx=125,pady=125)
 
+label3 = Label(mi_Frame, text="hola",bg= "green")
+label3.place(x=950, y=125)
+label3.config(padx=125,pady=125)
+
+    
 
 
 mi_Entry = Entry(mi_Frame) #Creación de Entry
@@ -107,6 +120,8 @@ raiz.geometry(posicion)
 
 raiz.resizable(0,0)
 raiz.title("Calculos Ortagonales")
+
+
 
 
 

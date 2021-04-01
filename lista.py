@@ -45,3 +45,14 @@ class ListaEnlazada:
             print('Nombre Matriz: '+ str(tmp.nombre)+' filas: '+ str(tmp.filas)+ ' columnas: '+ str(tmp.columnas)+'\n imagen: ')
             tmp.imagen.recorrerFilas()
             tmp = tmp.siguiente
+
+    def listaCombobox(self):
+         tmp = self.inicio
+         cadena = ""
+         while tmp is not None:          
+            cadena = cadena+'"'+str(tmp.nombre)+'"'+',\n'
+            
+            tmp = tmp.siguiente
+         
+        
+         return cadena
