@@ -4,13 +4,14 @@ import xml.etree.ElementTree as ET
 from matriz import matriz
 from lista import ListaEnlazada
 from tkinter import ttk
+from tkinter import messagebox
 
 lista = ListaEnlazada()
 n = matriz()
-##cadena = ""
-
+combobox1= ttk.Combobox
   
-
+          
+              
 
 def abrir():
 
@@ -53,15 +54,22 @@ def abrir():
      nodo.imagen = n        
     
     cadena = lista.listaCombobox()
-    comboExample = ttk.Combobox(raiz, 
-                            values=[cadena])
-    comboExample.place(x=50, y=100)
-    comboExample.current(1)
-    lista.mostrarMatriz()
-    
-               
-              
 
+    selected_month = StringVar()
+    combobox1= ttk.Combobox(raiz, 
+                                  width=10, 
+                                  values=cadena)
+    
+    combobox1.place(x=50, y=100)
+    combobox1.current(1)
+    hola = combobox1.bind('<<ComboboxSelected>>')
+    print(hola)
+   
+
+    lista.mostrarMatriz()
+
+
+   
 
 # Configuración de la raíz
 raiz = Tk()
@@ -81,6 +89,10 @@ label2.config(padx=125,pady=125)
 label3 = Label(mi_Frame, text="hola",bg= "green")
 label3.place(x=950, y=125)
 label3.config(padx=125,pady=125)
+
+
+
+
 
     
 

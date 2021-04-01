@@ -48,11 +48,11 @@ class ListaEnlazada:
 
     def listaCombobox(self):
          tmp = self.inicio
-         cadena = ""
+         lista = []
          while tmp is not None:          
-            cadena = cadena+'"'+str(tmp.nombre)+'"'+',\n'
-            
+            #cadena = cadena+'"'+str(tmp.nombre)+'"'+',\n'
+            lista.append(tmp.nombre)
             tmp = tmp.siguiente
          
         
-         return cadena
+         return lista
