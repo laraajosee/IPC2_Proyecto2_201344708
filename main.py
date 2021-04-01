@@ -56,27 +56,29 @@ def abrir():
 
 
 # Configuración de la raíz
-root = Tk()
+raiz = Tk()
+imagen = PhotoImage(file="prueva.png")
+mi_Frame = Frame(raiz, width=800, height=500)
+mi_Frame.pack()
+mi_Label = Label(mi_Frame, text="Metodo place")
+mi_Label.place(x=70, y=10)
+label1 = Label(mi_Frame, text="hola",image=imagen)
+label1.place(x=5, y=50)
+label1.config(padx=20,pady=20)
 
-menubar = Menu(root)
-root.config(menu=menubar)
 
-ancho_ventana = 900
-alto_ventana = 500
 
-x_ventana = root.winfo_screenwidth() // 2 - ancho_ventana // 2
-y_ventana = root.winfo_screenheight() // 2 - alto_ventana // 2
+mi_Entry = Entry(mi_Frame) #Creación de Entry
+mi_Entry.place(x=150, y=10)
 
-posicion = str(ancho_ventana) + "x" + str(alto_ventana) + "+" + str(x_ventana) + "+" + str(y_ventana)
-root.geometry(posicion)
 
-root.resizable(0,0)
-root.title("Ventana de ejemplo")
 
+menubar = Menu(raiz)
+raiz.config(menu=menubar)
 filemenu = Menu(menubar, tearoff=0)
 filemenu.add_command(label="Cargar Archivo", command=abrir)
 filemenu.add_separator()
-filemenu.add_command(label="Salir", command=root.quit)
+filemenu.add_command(label="Salir", command=raiz.quit)
 
 editmenu = Menu(menubar, tearoff=0)
 editmenu.add_command(label="Cortar")
@@ -90,8 +92,18 @@ menubar.add_cascade(label="Cargar Archivo", menu=filemenu, command=abrir)
 menubar.add_cascade(label="Operaciones", menu=editmenu)
 menubar.add_cascade(label="Reportes", menu=helpmenu)
 menubar.add_cascade(label="Ayuda", menu=helpmenu)
+ancho_ventana = 900
+alto_ventana = 500
+
+x_ventana = raiz.winfo_screenwidth() // 2 - ancho_ventana // 2
+y_ventana = raiz.winfo_screenheight() // 2 - alto_ventana // 2
+
+posicion = str(ancho_ventana) + "x" + str(alto_ventana) + "+" + str(x_ventana) + "+" + str(y_ventana)
+raiz.geometry(posicion)
+
+raiz.resizable(0,0)
+raiz.title("Calculos Ortagonales")
 
 
 
-# Finalmente bucle de la aplicación
-root.mainloop()
+raiz.mainloop()

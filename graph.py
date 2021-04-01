@@ -6,7 +6,7 @@ hola1 = "\n<TR>"
 hola2 = "\n<TD>left</TD>"
 hola3 = "\n</TR>"
 hola4 = "\n</TABLE>>'''"
-h = Graph('html_table')
+h = Graph('html_tablee')
 h.node('tab', label=hola)
 
 
