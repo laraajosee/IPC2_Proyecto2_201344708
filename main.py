@@ -1,16 +1,22 @@
+from os import name
 from tkinter import *
 from tkinter.filedialog import askopenfilename
 import xml.etree.ElementTree as ET
 from matriz import matriz
 from lista import ListaEnlazada
 from tkinter import ttk
-from tkinter import messagebox
+import tkinter as tk
+from tkinter.messagebox import showinfo
+
+
 
 lista = ListaEnlazada()
 n = matriz()
-combobox1= ttk.Combobox
-  
-          
+listaCombo = []
+
+
+
+        
               
 
 def abrir():
@@ -51,90 +57,75 @@ def abrir():
                     
      
      nodo = lista.insertarFinal(nombre,filas,columnas,"")
-     nodo.imagen = n        
+     listaCombo.append(nombre)
+     nodo.imagen = n   
+     
+          
     
-    cadena = lista.listaCombobox()
-
-    selected_month = StringVar()
-    combobox1= ttk.Combobox(raiz, 
-                                  width=10, 
-                                  values=cadena)
-    
-    combobox1.place(x=50, y=100)
-    combobox1.current(1)
-    hola = combobox1.bind('<<ComboboxSelected>>')
-    print(hola)
    
-
     lista.mostrarMatriz()
+    lista.crearImagen()
 
+def changeMonth():
+    comboExample["values"] = listaCombo
+                                   
 
-   
+def callbackFunc(event):
+     print("New Element Selected")
+     print(comboExample.get())
+     imagen = PhotoImage(file="M4.gv.png")
+     #imagen_zoom=imagen.zoom(4)
+     etiqueta1.config(image=imagen)
+     ventana.mainloop()
 
-# Configuración de la raíz
-raiz = Tk()
-imagen = PhotoImage(file="prueva.png")
-mi_Frame = Frame(raiz, width=1500, height=1500)
-mi_Frame.pack()
-#mi_Label = Label(mi_Frame, text="Metodo place")
-#mi_Label.place(x=70, y=10)
-label1 = Label(mi_Frame, text="hola",bg= "green")
-label1.place(x=50, y=125)
-label1.config(padx=125,pady=125)
+def pulsar():
+    #print('Hola',nombre.get())
+    imagen = PhotoImage(file="M4.gv.png")
+    etiqueta1.config(image=imagen)
+    ventana.mainloop()
 
-label2 = Label(mi_Frame, text="hola",bg= "green")
-label2.place(x=500, y=125)
-label2.config(padx=125,pady=125)
-
-label3 = Label(mi_Frame, text="hola",bg= "green")
-label3.place(x=950, y=125)
-label3.config(padx=125,pady=125)
-
-
-
-
-
-    
-
-
-mi_Entry = Entry(mi_Frame) #Creación de Entry
-mi_Entry.place(x=150, y=10)
-
-
-
-menubar = Menu(raiz)
-raiz.config(menu=menubar)
-filemenu = Menu(menubar, tearoff=0)
-filemenu.add_command(label="Cargar Archivo", command=abrir)
-filemenu.add_separator()
-filemenu.add_command(label="Salir", command=raiz.quit)
-
-editmenu = Menu(menubar, tearoff=0)
-editmenu.add_command(label="Cortar")
-
-helpmenu = Menu(menubar, tearoff=0)
-helpmenu.add_command(label="Ayuda")
-helpmenu.add_separator()
-helpmenu.add_command(label="Acerca de...")
-
-menubar.add_cascade(label="Cargar Archivo", menu=filemenu, command=abrir)
-menubar.add_cascade(label="Operaciones", menu=editmenu)
-menubar.add_cascade(label="Reportes", menu=helpmenu)
-menubar.add_cascade(label="Ayuda", menu=helpmenu)
+ventana=Tk()
+#ventana.geometry('800x500')
 ancho_ventana = 1500
 alto_ventana = 800
-
-x_ventana = raiz.winfo_screenwidth() // 2 - ancho_ventana // 2
-y_ventana = raiz.winfo_screenheight() // 2 - alto_ventana // 2
-
+x_ventana = ventana.winfo_screenwidth() // 2 - ancho_ventana // 2
+y_ventana = ventana.winfo_screenheight() // 2 - alto_ventana // 2
 posicion = str(ancho_ventana) + "x" + str(alto_ventana) + "+" + str(x_ventana) + "+" + str(y_ventana)
-raiz.geometry(posicion)
+ventana.geometry(posicion)
+ventana.resizable(0,0)
 
-raiz.resizable(0,0)
-raiz.title("Calculos Ortagonales")
+etiqueta=Label(ventana,text='Nombre:')
+etiqueta.place(x=650,y=20)
+
+etiqueta1=Label(ventana,text='imagen1',bg="green")
+etiqueta1.place(x=50,y=130)
+etiqueta1.config(padx=200,pady=200)
+#imagen = PhotoImage(file="prueva.png")
+#etiqueta1.config(image=imagen)
+
+boton=Button(ventana,text='Actualizar',command=pulsar)
+boton.place(x=20,y=700)
+
+nombre=StringVar()
+cajatexto=Entry(ventana,textvariable=nombre)
+cajatexto.place(x=500,y=20)
+
+menubar = Menu(ventana)
+ventana.config(menu=menubar)
+filemenu = Menu(menubar, tearoff=0)
+
+filemenu.add_command(label="Cargar Archivo", command=abrir)
+filemenu.add_separator()
+filemenu.add_command(label="Salir", command=ventana.quit)
+
+menubar.add_cascade(label="Cargar Archivo", menu=filemenu, command=abrir)
+
+comboExample = ttk.Combobox(ventana, 
+                            values=["hola"],postcommand=changeMonth)
+comboExample.place(x=50,y=100)
+comboExample.current()
+
+comboExample.bind("<<ComboboxSelected>>", callbackFunc)
 
 
-
-
-
-raiz.mainloop()
+ventana.mainloop()
