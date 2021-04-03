@@ -7,22 +7,21 @@ class matriz:
         self.eFilas = listaEncabezado()
         self.eColumnas = listaEncabezado()
 
+
+
     def insertar(self, fila, columna, valor):
         nuevo = Nodo(fila, columna, valor)
-
-        #inrestar por filas
+          #inrestar por filas
         eFila = self.eFilas.getEncabezado(fila)
         if eFila == None:
             eFila = nodoEncabezado(fila)
             eFila.accesoNodo = nuevo
             self.eFilas.setEncabezado(eFila)
-            
         else:
             if nuevo.columna < eFila.accesoNodo.columna:
                 nuevo.derecha = eFila.accesoNodo
                 eFila.accesoNodo.izquierda = nuevo
                 eFila.accesoNodo = nuevo
-                
             else:
                 actual = eFila.accesoNodo
                 while actual.derecha != None:
@@ -33,39 +32,40 @@ class matriz:
                         actual.derecha = nuevo
                         break
                     actual = actual.derecha
-                    
 
                 if actual.derecha == None: 
                     actual.derecha = nuevo
                     nuevo.izquierda = actual
-                    
+                     
 
     def recorrerFilas(self):
         eFila = self.eFilas.primero   
-        #print("\n**************recorrido por filas*************************")
+        print("\n**************recorrido por filas*************************")
 
         while eFila != None:
 
             actual = eFila.accesoNodo
-            #print("\nfila"+str(actual.fila))
-            #print("columna   valor  ")
+            print("\nfila"+str(actual.fila))
+            print("columna   valor  ")
             while actual != None:
-                #print(str(actual.columna)+"            "+ actual.valor)
+                print(str(actual.columna)+"      "+ actual.valor)
                 actual = actual.derecha
 
             eFila = eFila.siguiente
-        
-        #print("\n**************FIn recorrido por filas*************************")
+
+        print("\n**************FIn recorrido por filas*************************")
 
     def llenarCeldas(self, var):
       
         eFila = self.eFilas.primero  
         concatenar = ''
         concatenar = "<<TABLE>" 
-        #print("\n**************recorrido por filas*************************")
+        #print("\n**************empezando tabla*************************")
 
         while eFila != None:
+            
             concatenar = concatenar + "\n<TR>"
+            #print("creando Fila")
             actual = eFila.accesoNodo
             #print("\nfila"+str(actual.fila))
             #print("columna   valor  ")
@@ -77,10 +77,11 @@ class matriz:
                  concatenar = concatenar + "\n<TD> </TD>" 
                 actual = actual.derecha
             concatenar = concatenar + "\n</TR>"
+            print("finalizando filas")
             eFila = eFila.siguiente
         
         concatenar = concatenar + "\n</TABLE>>"
-        #print("\n**************FIn recorrido por filas*************************")
+        #print("\n**************Finalizando Tabla *************************")
         h = Graph(var, format='png')
         h.node('tab', label=concatenar)
         h.view()

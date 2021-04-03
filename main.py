@@ -11,10 +11,10 @@ from tkinter.messagebox import showinfo
 
 
 lista = ListaEnlazada()
-n = matriz()
+
 listaCombo = []
 
-           
+   
 
 def abrir():
 
@@ -38,6 +38,7 @@ def abrir():
                 imagen = subelemento.text
                 contadorColumnas = 0
                 contadorFilas = 0
+                n = matriz()
                 for k in imagen:
                     if(k == '-'):
                         n.insertar(contadorFilas,contadorColumnas,'-')
@@ -50,18 +51,22 @@ def abrir():
                     if(k == '\n'):
                         contadorFilas = contadorFilas +1
                         contadorColumnas = 1
-                       
+                   
                     
      
-     nodo = lista.insertarFinal(nombre,filas,columnas,"")
+     lista.insertarFinal(nombre,filas,columnas,n)
      listaCombo.append(nombre)
-     nodo.imagen = n   
+     #nodo.imagen = n
+     print("es la matriz que se esta guardando:")
+     print(n.recorrerFilas())
+        
+     
      
           
     
    
     #lista.mostrarMatriz()
-    lista.crearImagen()
+    #lista.crearImagen()
 
 def changeMonth():
     comboExample["values"] = listaCombo
