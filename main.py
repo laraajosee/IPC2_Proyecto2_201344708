@@ -14,10 +14,7 @@ lista = ListaEnlazada()
 n = matriz()
 listaCombo = []
 
-
-
-        
-              
+           
 
 def abrir():
 
@@ -63,7 +60,7 @@ def abrir():
           
     
    
-    lista.mostrarMatriz()
+    #lista.mostrarMatriz()
     lista.crearImagen()
 
 def changeMonth():

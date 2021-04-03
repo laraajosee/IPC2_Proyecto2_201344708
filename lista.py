@@ -1,4 +1,6 @@
+from matriz import matriz
 from nodo import Nodo
+from graphviz import Graph
 
 class ListaEnlazada:
     def __init__(self):
@@ -56,3 +58,15 @@ class ListaEnlazada:
          
         
          return lista
+
+    def crearImagen(self):
+        tmp = self.inicio
+        while tmp is not None:
+            print('Nombre Matriz: '+ str(tmp.nombre))
+            var = str(tmp.nombre)
+            tmp.imagen.recorrerFilas()
+            tmp.imagen.llenarCeldas(var)
+            #print("esto es hola : " + hola)
+            tmp = tmp.siguiente
+
+          

@@ -1,5 +1,6 @@
 from nodos import Nodo, nodoEncabezado
 from encabezado import listaEncabezado
+from graphviz import Graph
 
 class matriz:
     def __init__(self) :
@@ -41,20 +42,48 @@ class matriz:
 
     def recorrerFilas(self):
         eFila = self.eFilas.primero   
-        print("\n**************recorrido por filas*************************")
+        #print("\n**************recorrido por filas*************************")
 
         while eFila != None:
 
             actual = eFila.accesoNodo
-            print("\nfila"+str(actual.fila))
-            print("columna   valor  ")
+            #print("\nfila"+str(actual.fila))
+            #print("columna   valor  ")
             while actual != None:
-                print(str(actual.columna)+"            "+ actual.valor)
+                #print(str(actual.columna)+"            "+ actual.valor)
                 actual = actual.derecha
 
             eFila = eFila.siguiente
         
-        print("\n**************FIn recorrido por filas*************************")
+        #print("\n**************FIn recorrido por filas*************************")
+
+    def llenarCeldas(self, var):
+      
+        eFila = self.eFilas.primero  
+        concatenar = ''
+        concatenar = "<<TABLE>" 
+        #print("\n**************recorrido por filas*************************")
+
+        while eFila != None:
+            concatenar = concatenar + "\n<TR>"
+            actual = eFila.accesoNodo
+            #print("\nfila"+str(actual.fila))
+            #print("columna   valor  ")
+            while actual != None:
+                #print(str(actual.columna)+"            "+ actual.valor)
+                if(actual.valor== '*'):
+                 concatenar = concatenar + "\n<TD bgcolor='black'>*</TD>" 
+                if(actual.valor== '-'):
+                 concatenar = concatenar + "\n<TD> </TD>" 
+                actual = actual.derecha
+            concatenar = concatenar + "\n</TR>"
+            eFila = eFila.siguiente
+        
+        concatenar = concatenar + "\n</TABLE>>"
+        #print("\n**************FIn recorrido por filas*************************")
+        h = Graph(var, format='png')
+        h.node('tab', label=concatenar)
+        h.view()
 
     def recorrerColumnas(self):
         eColumna = self.eColumnas.primero

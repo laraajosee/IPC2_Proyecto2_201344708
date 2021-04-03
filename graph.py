@@ -1,33 +1,13 @@
-import tkinter as tk
-from tkinter import ttk
-from tkinter.messagebox import showinfo
-
-root = tk.Tk()
-root.geometry('300x200')
-root.resizable(False, False)
-root.title('Combobox Widget')
+from graphviz import Graph
 
 
-def month_changed(event):
-    msg = f'You selected {month_cb.get()}!'
-    showinfo(title='Result', message=msg)
+hola = '''<<TABLE>+"\n<TR>"+"\n<TD>left</TD>"+"\n</TR>"+\n</TABLE>>'''
+hola1 = "\n<TR>"
+hola2 = "\n<TD>left</TD>"
+hola3 = "\n</TR>"
+hola4 = "\n</TABLE>>'''"
+h = Graph('html_table', format='png')
+h.node('tab', label=hola)
 
 
-# month of year
-months = ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
-
-label = ttk.Label(text="Please select a month:")
-label.pack(fill='x', padx=5, pady=5)
-
-# create a combobox
-selected_month = tk.StringVar()
-
-month_cb = ttk.Combobox(root, textvariable=selected_month)
-month_cb['values'] = months
-month_cb['state'] = 'readonly'  # normal
-month_cb.pack(fill='x', padx=5, pady=5)
-
-month_cb.bind('<<ComboboxSelected>>', month_changed)
-
-root.mainloop()
+h.view()
