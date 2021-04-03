@@ -55,36 +55,33 @@ class matriz:
 
         print("\n**************FIn recorrido por filas*************************")
 
-    def llenarCeldas(self, var):
-      
-        eFila = self.eFilas.primero  
-        concatenar = ''
-        concatenar = "<<TABLE>" 
-        #print("\n**************empezando tabla*************************")
+    def llenarCeldas(self,var):
+        eFila = self.eFilas.primero
+        concatenar = '<<TABLE>' 
+        print("\n**************recorrido por filas*************************")
 
         while eFila != None:
-            
-            concatenar = concatenar + "\n<TR>"
-            #print("creando Fila")
+            concatenar = concatenar + '\n<TR>'
             actual = eFila.accesoNodo
-            #print("\nfila"+str(actual.fila))
-            #print("columna   valor  ")
+            print("\nfila"+str(actual.fila))
+            print("columna   valor  ")
             while actual != None:
-                #print(str(actual.columna)+"            "+ actual.valor)
-                if(actual.valor== '*'):
-                 concatenar = concatenar + "\n<TD bgcolor='black'>*</TD>" 
-                if(actual.valor== '-'):
-                 concatenar = concatenar + "\n<TD> </TD>" 
+                print(str(actual.columna)+"      "+ actual.valor)
+                concatenar = concatenar + '<TD>'
+                concatenar = concatenar + '</TD>'
                 actual = actual.derecha
-            concatenar = concatenar + "\n</TR>"
-            print("finalizando filas")
+            concatenar = concatenar + '\n</TR>'
             eFila = eFila.siguiente
         
-        concatenar = concatenar + "\n</TABLE>>"
-        #print("\n**************Finalizando Tabla *************************")
+        #concatenar = concatenar + "\n<TR>\n<TD>a</TD>\n</TR>"
+        concatenar = concatenar + '\n</TABLE>>'
+        print(concatenar)
         h = Graph(var, format='png')
         h.node('tab', label=concatenar)
+        concatenar = ""
         h.view()
+        print("\n**************FIn recorrido por filas*************************")
+        
 
     def recorrerColumnas(self):
         eColumna = self.eColumnas.primero

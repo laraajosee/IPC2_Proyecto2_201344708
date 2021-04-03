@@ -24,7 +24,7 @@ def abrir():
 
     
     for elemento in root:
-     
+     n = matriz()
        # print(elemento.tag) #tag
      for subelemento in elemento:
             print('> ' + subelemento.text) #valores -> text
@@ -38,7 +38,7 @@ def abrir():
                 imagen = subelemento.text
                 contadorColumnas = 0
                 contadorFilas = 0
-                n = matriz()
+                
                 for k in imagen:
                     if(k == '-'):
                         n.insertar(contadorFilas,contadorColumnas,'-')
@@ -54,19 +54,15 @@ def abrir():
                    
                     
      
-     lista.insertarFinal(nombre,filas,columnas,n)
+     nodo = lista.insertarFinal(nombre,filas,columnas,n)
+     nodo.imagen = n  
      listaCombo.append(nombre)
-     #nodo.imagen = n
-     print("es la matriz que se esta guardando:")
-     print(n.recorrerFilas())
         
      
      
-          
-    
    
     #lista.mostrarMatriz()
-    #lista.crearImagen()
+    lista.crearImagen()
 
 def changeMonth():
     comboExample["values"] = listaCombo

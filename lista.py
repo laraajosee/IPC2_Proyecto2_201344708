@@ -64,7 +64,7 @@ class ListaEnlazada:
         while tmp is not None:
             print('Nombre Matriz: '+ str(tmp.nombre))
             var = str(tmp.nombre)
-            tmp.imagen.recorrerFilas()
+            #tmp.imagen.recorrerFilas()
             tmp.imagen.llenarCeldas(var)
             #print("esto es hola : " + hola)
             tmp = tmp.siguiente
