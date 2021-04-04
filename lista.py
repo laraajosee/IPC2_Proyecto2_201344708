@@ -39,6 +39,22 @@ class ListaEnlazada:
                 return tmp
             tmp = tmp.siguiente
         return None
+    
+    def getFilas(self, valor):
+        tmp = self.inicio
+        while tmp is not None:
+            if str.lower(tmp.nombre) == str.lower(valor):
+                return tmp.filas
+            tmp = tmp.siguiente
+        return None
+
+    def getColumnas(self, valor):
+        tmp = self.inicio
+        while tmp is not None:
+            if str.lower(tmp.nombre) == str.lower(valor):
+                return int(tmp.columnas)
+            tmp = tmp.siguiente
+        return None
 
         
     def mostrarMatriz(self):
@@ -58,11 +74,20 @@ class ListaEnlazada:
          
         
          return lista
+    
+    def getSize(self):
+        tmp = self.inicio
+        cont = 0
+        while tmp is not None:
+            cont += 1
+            tmp = tmp.siguiente
+            print(cont)
+        return cont
 
     def crearImagen(self):
         tmp = self.inicio
         while tmp is not None:
-            print('Nombre Matriz: '+ str(tmp.nombre))
+            #print('Nombre Matriz: '+ str(tmp.nombre))
             var = str(tmp.nombre)
             #tmp.imagen.recorrerFilas()
             tmp.imagen.llenarCeldas(var)

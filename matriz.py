@@ -1,6 +1,10 @@
+from tkinter.constants import FALSE
+
+from graphviz.backend import view
 from nodos import Nodo, nodoEncabezado
 from encabezado import listaEncabezado
 from graphviz import Graph
+
 
 class matriz:
     def __init__(self) :
@@ -40,7 +44,7 @@ class matriz:
 
     def recorrerFilas(self):
         eFila = self.eFilas.primero   
-        print("\n**************recorrido por filas*************************")
+        #print("\n**************recorrido por filas*************************")
 
         while eFila != None:
 
@@ -53,20 +57,20 @@ class matriz:
 
             eFila = eFila.siguiente
 
-        print("\n**************FIn recorrido por filas*************************")
+        #print("\n**************FIn recorrido por filas*************************")
 
     def llenarCeldas(self,var):
         eFila = self.eFilas.primero
         concatenar = '<<TABLE>' 
-        print("\n**************recorrido por filas*************************")
+        #print("\n**************recorrido por filas*************************")
 
         while eFila != None:
             concatenar = concatenar + '\n<TR>'
             actual = eFila.accesoNodo
-            print("\nfila"+str(actual.fila))
-            print("columna   valor  ")
+            #print("\nfila"+str(actual.fila))
+            #print("columna   valor  ")
             while actual != None:
-                print(str(actual.columna)+"      "+ actual.valor)
+                #print(str(actual.columna)+"      "+ actual.valor)
                 if(actual.valor == '*'):
                   concatenar = concatenar + '<TD bgcolor="black">'
                 if(actual.valor == '-'):
@@ -76,14 +80,14 @@ class matriz:
             concatenar = concatenar + '\n</TR>'
             eFila = eFila.siguiente
         
-        #concatenar = concatenar + "\n<TR>\n<TD>a</TD>\n</TR>"
         concatenar = concatenar + '\n</TABLE>>'
-        print(concatenar)
-        h = Graph(var, format='png')
+        #print(concatenar)
+        h = Graph(var,format='png')
         h.node('tab', label=concatenar)
         concatenar = ""
-        h.view()
-        print("\n**************FIn recorrido por filas*************************")
+        h.render()
+        #h.view()
+        #print("\n**************FIn recorrido por filas*************************")
         
 
     def recorrerColumnas(self):
@@ -102,3 +106,24 @@ class matriz:
             eColumna = eColumna.siguiente  
        
         print("\n**************fin  recorrido por columnas*************************")
+
+    def rotacion(self):
+        concatenar = ""
+        eFila = self.eFilas.primero   
+        #print("\n**************recorrido por filas*************************")
+
+        while eFila != None:
+
+            actual = eFila.accesoNodo
+            #print("\nfila"+str(actual.fila))
+            #print("columna   valor  ")
+
+            while actual != None:
+                #print(str(actual.columna)+"      "+ actual.valor)
+                concatenar = concatenar  +actual.valor
+                actual = actual.derecha
+              
+            concatenar = concatenar +"\n" 
+            eFila = eFila.siguiente
+        return concatenar
+       # print("\n**************FIn recorrido por filas*************************")

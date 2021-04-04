@@ -77,6 +77,46 @@ def callbackFunc(event):
      etiqueta1.config(image=imagen)
      ventana.mainloop()
 
+
+
+def RotacionVertical():
+    n = matriz()
+   
+    print("rotando Imagen")
+    nodo = lista.getNodo(comboExample.get())
+    columnas = lista.getColumnas(comboExample.get())
+    print("el numero de columnas es: " +str(columnas))
+    
+    NuevaImagen = nodo.imagen.rotacion()
+    print(NuevaImagen)
+    contadorFilas = 1
+    contadorColumnas = columnas
+    
+    
+    for k in NuevaImagen:
+        if(k == '*'):
+            n.insertar(contadorFilas,contadorColumnas,'*')
+            contadorColumnas = contadorColumnas - 1 
+        if(k == '-'):
+            n.insertar(contadorFilas,contadorColumnas,'-')
+            contadorColumnas = contadorColumnas - 1 
+        if(k == '\n'):
+         contadorFilas = contadorFilas + 1
+   
+         contadorColumnas = columnas
+    #n.recorrerFilas()
+    
+    nombre = comboExample.get()+"RotadaVertical"
+    nodo = lista.insertarFinal(nombre,contadorColumnas,contadorFilas,n)
+    nodo.imagen = n  
+    listaCombo.append(comboExample.get()+'RotadaVertical')    
+
+    lista.crearImagen()
+    
+    
+
+
+
 def pulsar():
     n = matriz()
     contadorColumnas = 1
@@ -92,33 +132,28 @@ def pulsar():
     for k in NuevaImagen:
         if(k == '*'):
             n.insertar(contadorRotacion,contadorColumnas,'*')
-            
-            print("contador Filas"+ str(contadorRotacion) )
-            print("contador Columnas: "+ str(contadorColumnas))
             contadorColumnas = contadorColumnas +1 
         if(k == '-'):
             n.insertar(contadorRotacion,contadorColumnas,'-')
-            
-            print("contador Filas"+ str(contadorRotacion) )
-            print("contador Columnas: "+ str(contadorColumnas))
+        
             contadorColumnas = contadorColumnas +1 
         if(k == '\n'):
          contadorRotacion = contadorRotacion - 1
-         #print("contador Filas:"+str(contadorRotacion))
+   
          contadorColumnas = 1
     #n.recorrerFilas()
     
-    nombre = comboExample.get()+"rotada"
+    nombre = comboExample.get()+"RotadaHorizontal"
     nodo = lista.insertarFinal(nombre,contadorColumnas,filas,n)
     nodo.imagen = n  
-    listaCombo.append(comboExample.get()+'rotada')    
+    listaCombo.append(comboExample.get()+'RotadaHorizontal')    
 
     lista.crearImagen()
 
 ventana=Tk()
 #ventana.geometry('800x500')
 ancho_ventana = 1200
-alto_ventana = 800
+alto_ventana = 650
 x_ventana = ventana.winfo_screenwidth() // 2 - ancho_ventana // 2
 y_ventana = ventana.winfo_screenheight() // 2 - alto_ventana // 2
 posicion = str(ancho_ventana) + "x" + str(alto_ventana) + "+" + str(x_ventana) + "+" + str(y_ventana)
@@ -136,7 +171,10 @@ etiqueta2.config(padx=125,pady=125)
 
 
 boton=Button(ventana,text='Rotacion Horizontal',command=pulsar)
-boton.place(x=50,y=525)
+boton.place(x=50,y=475)
+
+botonRotacion=Button(ventana,text='Rotacion Vertical',command=RotacionVertical)
+botonRotacion.place(x=200,y=475)
 
 menubar = Menu(ventana)
 ventana.config(menu=menubar)

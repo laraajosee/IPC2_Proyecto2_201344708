@@ -13,5 +13,5 @@ print(hola)
 h = Graph('html_table', format='png')
 h.node('tab', label=hola)
 
-
-h.view()
+#h.view()
+h.render()
