@@ -69,9 +69,7 @@ def changeMonth():
                                    
 
 def callbackFunc(event):
-     nodo = lista.getNodo(comboExample.get())
-     print("imprimiento pulsar")
-     nodo.imagen.recorrerFilas()
+
      print(comboExample.get())
      imagen = PhotoImage(file=comboExample.get()+".gv.png")
      
@@ -80,10 +78,42 @@ def callbackFunc(event):
      ventana.mainloop()
 
 def pulsar():
+    n = matriz()
+    contadorColumnas = 1
     print("rotando Imagen")
-    imagen = PhotoImage(file="M4.gv.png")
-    etiqueta1.config(image=imagen)
-    ventana.mainloop()
+    nodo = lista.getNodo(comboExample.get())
+    filas = lista.getFilas(comboExample.get())
+    print("el numero de filas es: " +str(filas))
+    
+    NuevaImagen = nodo.imagen.rotacion()
+    print(NuevaImagen)
+    contadorRotacion = int(filas)
+    
+    for k in NuevaImagen:
+        if(k == '*'):
+            n.insertar(contadorRotacion,contadorColumnas,'*')
+            
+            print("contador Filas"+ str(contadorRotacion) )
+            print("contador Columnas: "+ str(contadorColumnas))
+            contadorColumnas = contadorColumnas +1 
+        if(k == '-'):
+            n.insertar(contadorRotacion,contadorColumnas,'-')
+            
+            print("contador Filas"+ str(contadorRotacion) )
+            print("contador Columnas: "+ str(contadorColumnas))
+            contadorColumnas = contadorColumnas +1 
+        if(k == '\n'):
+         contadorRotacion = contadorRotacion - 1
+         #print("contador Filas:"+str(contadorRotacion))
+         contadorColumnas = 1
+    #n.recorrerFilas()
+    
+    nombre = comboExample.get()+"rotada"
+    nodo = lista.insertarFinal(nombre,contadorColumnas,filas,n)
+    nodo.imagen = n  
+    listaCombo.append(comboExample.get()+'rotada')    
+
+    lista.crearImagen()
 
 ventana=Tk()
 #ventana.geometry('800x500')
