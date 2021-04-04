@@ -27,7 +27,7 @@ def abrir():
      n = matriz()
        # print(elemento.tag) #tag
      for subelemento in elemento:
-            print('> ' + subelemento.text) #valores -> text
+            #print('> ' + subelemento.text) #valores -> text
             if subelemento.tag == 'nombre':
                 nombre = subelemento.text
             if subelemento.tag == 'filas':
@@ -69,22 +69,25 @@ def changeMonth():
                                    
 
 def callbackFunc(event):
-     print("New Element Selected")
+     nodo = lista.getNodo(comboExample.get())
+     print("imprimiento pulsar")
+     nodo.imagen.recorrerFilas()
      print(comboExample.get())
-     imagen = PhotoImage(file="M4.gv.png")
-     #imagen_zoom=imagen.zoom(4)
+     imagen = PhotoImage(file=comboExample.get()+".gv.png")
+     
+     #imagen_zoom=imagen.zoom(2)
      etiqueta1.config(image=imagen)
      ventana.mainloop()
 
 def pulsar():
-    #print('Hola',nombre.get())
+    print("rotando Imagen")
     imagen = PhotoImage(file="M4.gv.png")
     etiqueta1.config(image=imagen)
     ventana.mainloop()
 
 ventana=Tk()
 #ventana.geometry('800x500')
-ancho_ventana = 1500
+ancho_ventana = 1200
 alto_ventana = 800
 x_ventana = ventana.winfo_screenwidth() // 2 - ancho_ventana // 2
 y_ventana = ventana.winfo_screenheight() // 2 - alto_ventana // 2
@@ -92,21 +95,18 @@ posicion = str(ancho_ventana) + "x" + str(alto_ventana) + "+" + str(x_ventana) +
 ventana.geometry(posicion)
 ventana.resizable(0,0)
 
-etiqueta=Label(ventana,text='Nombre:')
-etiqueta.place(x=650,y=20)
 
 etiqueta1=Label(ventana,text='imagen1',bg="green")
 etiqueta1.place(x=50,y=130)
-etiqueta1.config(padx=200,pady=200)
-#imagen = PhotoImage(file="prueva.png")
-#etiqueta1.config(image=imagen)
+etiqueta1.config(padx=125,pady=125)
 
-boton=Button(ventana,text='Actualizar',command=pulsar)
-boton.place(x=20,y=700)
+etiqueta2=Label(ventana,text='imagen2',bg="green")
+etiqueta2.place(x=450,y=130)
+etiqueta2.config(padx=125,pady=125)
 
-nombre=StringVar()
-cajatexto=Entry(ventana,textvariable=nombre)
-cajatexto.place(x=500,y=20)
+
+boton=Button(ventana,text='Rotacion Horizontal',command=pulsar)
+boton.place(x=50,y=525)
 
 menubar = Menu(ventana)
 ventana.config(menu=menubar)
