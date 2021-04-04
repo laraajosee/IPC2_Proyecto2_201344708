@@ -77,7 +77,41 @@ def callbackFunc(event):
      etiqueta1.config(image=imagen)
      ventana.mainloop()
 
+def RotacionTranspuesta():
+    n = matriz()
+    ContadorFilas = 1
+    contadorColumnas = 1
+    print("rotando Imagen")
+    nodo = lista.getNodo(comboExample.get())
+    filas = lista.getFilas(comboExample.get())
+    columnas = lista.getColumnas(comboExample.get())
+    print("el numero de filas es: " +str(filas))
+    print("el numero de columnas es: " +str(columnas))
+    
+    NuevaImagen = nodo.imagen.rotacion()
+    print(NuevaImagen)
+    #contadorRotacion = int(filas)
+    
+    
+    for k in NuevaImagen:
+        if(k == '*'):
+            n.insertar(ContadorFilas,contadorColumnas,'*')
+            ContadorFilas = ContadorFilas +1 
+            #fila 1, columna 1 || fila 2, columna 1
+        if(k == '-'):
+            n.insertar(ContadorFilas,contadorColumnas,'-')
+            ContadorFilas = ContadorFilas +1 
+        if(k == '\n'):
+         ContadorFilas = 1
+         contadorColumnas =  contadorColumnas + 1
+    #n.recorrerFilas()
+    
+    nombre = comboExample.get()+"RotadaTranspuesta"
+    nodo = lista.insertarFinal(nombre,contadorColumnas,filas,n)
+    nodo.imagen = n  
+    listaCombo.append(comboExample.get()+'RotadaTranspuesta')    
 
+    lista.crearImagen()
 
 def RotacionVertical():
     n = matriz()
@@ -175,6 +209,9 @@ boton.place(x=50,y=475)
 
 botonRotacion=Button(ventana,text='Rotacion Vertical',command=RotacionVertical)
 botonRotacion.place(x=200,y=475)
+
+botonTranspuesta=Button(ventana,text='Rotacion Traspuesta',command=RotacionTranspuesta)
+botonTranspuesta.place(x=350,y=475)
 
 menubar = Menu(ventana)
 ventana.config(menu=menubar)
