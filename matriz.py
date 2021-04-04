@@ -67,7 +67,10 @@ class matriz:
             print("columna   valor  ")
             while actual != None:
                 print(str(actual.columna)+"      "+ actual.valor)
-                concatenar = concatenar + '<TD>'
+                if(actual.valor == '*'):
+                  concatenar = concatenar + '<TD bgcolor="black">'
+                if(actual.valor == '-'):
+                  concatenar = concatenar + '<TD>'
                 concatenar = concatenar + '</TD>'
                 actual = actual.derecha
             concatenar = concatenar + '\n</TR>'
