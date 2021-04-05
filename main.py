@@ -200,7 +200,7 @@ def LimpiarArea():
          ContadorFilas = ContadorFilas + 1
    
          ContadorColumnas = 1
-    n.recorrerFilas()
+    #n.recorrerFilas()
     
     nombre = comboExample.get()+"Borrada"
     nodo = lista.insertarFinal(nombre,ContadorFilas,ContadorColumnas,n)
@@ -254,6 +254,134 @@ def pulsar():
     str(now.date())+ " "+ str(now.time()))
     listaReporte.mostrar()
   
+def LineaHorizontal():
+    n = matriz()
+    LimparFila1= 0
+    LimpiarFila2 =  0
+    LimpiarColumna1 = 0
+    LimpiarColumna2 = 0
+    EElementos = 0
+    LimparFila1 = CordenadaFila1.get("1.0","end")
+    #LimpiarFila2 = CordenadaFila2.get("1.0","end")
+    LimpiarColumna1 = CordenadaColumna1.get("1.0","end")
+    #LimpiarColumna2 = CordenadaColumna2.get("1.0","end")
+    EElementos = Elementos.get("1.0","end")
+
+    ContadorColumnas = 1
+    ContadorFilas  = 1
+
+    fila1 = int(LimparFila1) 
+    #fila2 = int(LimpiarFila2) 
+    columna1= int(LimpiarColumna1) 
+    #columna2 =int(LimpiarColumna2) 
+    elementos = int(EElementos)
+
+    nodo = lista.getNodo(comboExample.get())
+    NuevaImagen = nodo.imagen.rotacion()
+    print(NuevaImagen)
+
+    for k in NuevaImagen:
+        if(k == '*'):
+            if(fila1 == ContadorFilas and (ContadorColumnas >= columna1 and ContadorColumnas <= elementos)):
+                #print("contador FIla: "+ str(ContadorFilas) +" Contador Columnas: "+ str(ContadorColumnas))
+                n.insertar(ContadorFilas,ContadorColumnas,'*')
+                ContadorColumnas = ContadorColumnas + 1
+               
+            else:
+                n.insertar(ContadorFilas,ContadorColumnas,'*')
+                ContadorColumnas = ContadorColumnas +1 
+            #n.insertar(contadorRotacion,contadorColumnas,'*')    
+        if(k == '-'):
+            if(fila1 == ContadorFilas and (ContadorColumnas >= columna1 and ContadorColumnas <= elementos)):
+                #print("contador FIla: "+ str(ContadorFilas) +" Contador Columnas: "+ str(ContadorColumnas))
+                n.insertar(ContadorFilas,ContadorColumnas,'*')
+                ContadorColumnas = ContadorColumnas + 1
+            else:
+                n.insertar(ContadorFilas,ContadorColumnas,'-')
+                ContadorColumnas = ContadorColumnas +1 
+               
+        if(k == '\n'):
+         ContadorFilas = ContadorFilas + 1
+   
+         ContadorColumnas = 1
+    nombre = comboExample.get()+"LHorizontal"
+    nodo = lista.insertarFinal(nombre,ContadorFilas,ContadorColumnas,n)
+    nodo.imagen = n  
+    listaCombo.append(comboExample.get()+'LHorizontal')  
+    
+
+    lista.crearImagen()
+    listaReporte.insertar("Se agrego una linea horizontal en:  "+"fila : "+ CordenadaFila1.get("1.0","end")+ 
+                                                  "columna : "+ CordenadaColumna1.get("1.0","end")+
+                                                  "Numero De elementos: "+ Elementos.get("1.0","end")+
+    "\n"+" Nombre de la matriz: "+comboExample.get()+"\nA la hora: "+
+    str(now.date())+ " "+ str(now.time()))
+    listaReporte.mostrar()
+
+def LineaVertical():
+    n = matriz()
+    LimparFila1= 0
+    LimpiarFila2 =  0
+    LimpiarColumna1 = 0
+    LimpiarColumna2 = 0
+    EElementos = 0
+    LimparFila1 = CordenadaFila1.get("1.0","end")
+    #LimpiarFila2 = CordenadaFila2.get("1.0","end")
+    LimpiarColumna1 = CordenadaColumna1.get("1.0","end")
+    #LimpiarColumna2 = CordenadaColumna2.get("1.0","end")
+    EElementos = Elementos.get("1.0","end")
+
+    ContadorColumnas = 1
+    ContadorFilas  = 1
+
+    fila1 = int(LimparFila1) 
+    #fila2 = int(LimpiarFila2) 
+    columna1= int(LimpiarColumna1) 
+    #columna2 =int(LimpiarColumna2) 
+    elementos = int(EElementos)
+
+    nodo = lista.getNodo(comboExample.get())
+    NuevaImagen = nodo.imagen.rotacion()
+    print(NuevaImagen)
+
+    for k in NuevaImagen:
+        if(k == '*'):
+            if((ContadorFilas >= fila1 and ContadorFilas <= elementos) and ContadorColumnas == columna1):
+                print("contador FIla: "+ str(ContadorFilas) +" Contador Columnas: "+ str(ContadorColumnas))
+                n.insertar(ContadorFilas,ContadorColumnas,'*')
+                ContadorColumnas = ContadorColumnas + 1  
+            else:
+                n.insertar(ContadorFilas,ContadorColumnas,'*')
+                ContadorColumnas = ContadorColumnas +1 
+             
+        if(k == '-'):
+            if((ContadorFilas >= fila1 and ContadorFilas <= elementos) and ContadorColumnas == columna1):
+                print("contador FIla: "+ str(ContadorFilas) +" Contador Columnas: "+ str(ContadorColumnas))
+                n.insertar(ContadorFilas,ContadorColumnas,'*')
+                ContadorColumnas = ContadorColumnas + 1
+            else:
+                n.insertar(ContadorFilas,ContadorColumnas,'-')
+                ContadorColumnas = ContadorColumnas +1 
+               
+        if(k == '\n'):
+         ContadorFilas = ContadorFilas + 1
+   
+         ContadorColumnas = 1
+    nombre = comboExample.get()+"LVertical"
+    nodo = lista.insertarFinal(nombre,ContadorFilas,ContadorColumnas,n)
+    nodo.imagen = n  
+    listaCombo.append(comboExample.get()+'Lvertical')  
+    
+
+    lista.crearImagen()
+    listaReporte.insertar("Se agrego una linea Vertical en:  "+"fila : "+ CordenadaFila1.get("1.0","end")+ 
+                                                  "columna : "+ CordenadaColumna1.get("1.0","end")+
+                                                  "Numero De elementos: "+ Elementos.get("1.0","end")+
+    "\n"+" Nombre de la matriz: "+comboExample.get()+"\n A la hora: "+
+    str(now.date())+ " "+ str(now.time()))
+    listaReporte.mostrar()
+    
+
 
 def CargarReporte():
     webbrowser.open_new_tab('Reporte.html') 
@@ -293,10 +421,10 @@ botonTranspuesta.place(x=350,y=475)
 botonLimpiar=Button(ventana,text='Limpiar Area',command=LimpiarArea)
 botonLimpiar.place(x=500,y=475)
 
-botonLimpiar=Button(ventana,text='Linea Horizontal',command=RotacionTranspuesta)
-botonLimpiar.place(x=500,y=500)
+botonHorizontal=Button(ventana,text='Linea Horizontal',command=LineaHorizontal)
+botonHorizontal.place(x=500,y=500)
 
-botonLimpiar=Button(ventana,text='Agregar Rectangulo',command=RotacionTranspuesta)
+botonLimpiar=Button(ventana,text='Linea Vertical',command=LineaVertical)
 botonLimpiar.place(x=500,y=525)
 
 botonLimpiar=Button(ventana,text='Agregar Triangulo',command=RotacionTranspuesta)
@@ -320,6 +448,10 @@ CordenadaColumna2=tk.Text(ventana, height=1.4,widt=7)
 CordenadaColumna2.place(x=780, y=500)
 CordenadaColumna2.insert("insert", "Columna")
 
+Elementos=tk.Text(ventana, height=1.4,widt=9)
+Elementos.place(x=845, y=500)
+Elementos.insert("insert", "Elementos")
+
 lblCordenada1=Label(ventana,text='Primera Cordenada')
 lblCordenada1.place(x=600,y=475)
 lblCordenada1.config(padx=10,pady=4)
@@ -332,15 +464,20 @@ menubar = Menu(ventana)
 ventana.config(menu=menubar)
 filemenu = Menu(menubar, tearoff=0)
 filemenu1 = Menu(menubar, tearoff=0)
+filemenu2 = Menu(menubar, tearoff=0)
 
 filemenu.add_command(label="Cargar Archivo", command=abrir)
 filemenu.add_separator()
 filemenu.add_command(label="Salir", command=ventana.quit)
 
 filemenu1.add_command(label="Cargar Reporte", command=CargarReporte)
+filemenu2.add_command(label="Datos del Estudiante", command=CargarReporte)
+filemenu2.add_command(label="Documentacion", command=CargarReporte)
+
 
 menubar.add_cascade(label="Cargar Archivo", menu=filemenu, command=abrir)
 menubar.add_cascade(label="Reporte", menu=filemenu1, command=abrir)
+menubar.add_cascade(label="Ayuda", menu=filemenu2, command=abrir)
 
 comboExample = ttk.Combobox(ventana, 
                             values=["hola"],postcommand=changeMonth)

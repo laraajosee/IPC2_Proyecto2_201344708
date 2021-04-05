@@ -1,0 +1,20 @@
+graph M5LVertical {
+	tab [label=<<TABLE>
+<TR><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD>
+</TR>
+<TR><TD></TD><TD bgcolor="black"></TD><TD></TD><TD bgcolor="black"></TD><TD></TD><TD bgcolor="black"></TD><TD bgcolor="black"></TD><TD bgcolor="black"></TD>
+</TR>
+<TR><TD></TD><TD bgcolor="black"></TD><TD bgcolor="black"></TD><TD bgcolor="black"></TD><TD></TD><TD></TD><TD bgcolor="black"></TD><TD></TD>
+</TR>
+<TR><TD></TD><TD bgcolor="black"></TD><TD></TD><TD bgcolor="black"></TD><TD></TD><TD></TD><TD bgcolor="black"></TD><TD></TD>
+</TR>
+<TR><TD></TD><TD bgcolor="black"></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD>
+</TR>
+<TR><TD></TD><TD bgcolor="black"></TD><TD bgcolor="black"></TD><TD bgcolor="black"></TD><TD></TD><TD bgcolor="black"></TD><TD bgcolor="black"></TD><TD bgcolor="black"></TD>
+</TR>
+<TR><TD></TD><TD bgcolor="black"></TD><TD bgcolor="black"></TD><TD></TD><TD></TD><TD bgcolor="black"></TD><TD></TD><TD bgcolor="black"></TD>
+</TR>
+<TR><TD></TD><TD bgcolor="black"></TD><TD bgcolor="black"></TD><TD></TD><TD></TD><TD bgcolor="black"></TD><TD bgcolor="black"></TD><TD bgcolor="black"></TD>
+</TR>
+</TABLE>>]
+}
