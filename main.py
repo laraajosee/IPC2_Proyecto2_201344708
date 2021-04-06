@@ -213,7 +213,7 @@ def LimpiarArea():
                                                   "columna 1: "+ CordenadaColumna1.get("1.0","end")+","+
                                                   "fila 2: "+ CordenadaFila2.get("1.0","end")+","+
                                                   "columna 2: "+ CordenadaColumna2.get("1.0","end")+","+
-    "\n"+"Nombre de la matriz: "+comboExample.get()+"\nA la hora: "+
+    "\n"+"Nombre de la matriz: "+comboExample.get()+"\n A la hora: "+
     str(now.date())+ " "+ str(now.time()))
     listaReporte.mostrar()
 
@@ -316,7 +316,7 @@ def LineaHorizontal():
     listaReporte.insertar("Se agrego una linea horizontal en:  "+"fila : "+ CordenadaFila1.get("1.0","end")+ +","+
                                                   "columna : "+ CordenadaColumna1.get("1.0","end")+","+
                                                   "Numero De elementos: "+ Elementos.get("1.0","end")+","+
-    "\n"+" Nombre de la matriz: "+comboExample.get()+"\nA la hora: "+
+    "\n"+" Nombre de la matriz: "+comboExample.get()+"\n A la hora: "+
     str(now.date())+ " "+ str(now.time()))
     listaReporte.mostrar()
 
@@ -435,7 +435,6 @@ def AgregarRectangulo():
                 n.insertar(ContadorFilas,ContadorColumnas,'-')
                 #print("contador FIla: "+ str(ContadorFilas) +" Contador Columnas: "+ str(ContadorColumnas))
                 ContadorColumnas = ContadorColumnas +1 
-               
         if(k == '\n'):
          ContadorFilas = ContadorFilas + 1
    
@@ -451,13 +450,84 @@ def AgregarRectangulo():
     listaReporte.insertar("Se agrego un rectangulo en: "+"Fila 1: "+ CordenadaFila1.get("1.0","end")+","+ 
                                                   "columna 1: "+ CordenadaColumna1.get("1.0","end")+","+ 
                                                   "fila 2: "+ CordenadaFila2.get("1.0","end")+","+ 
-                                                  "columna 2: "+ CordenadaColumna2.get("1.0","end")+"+"+
+                                                  "columna 2: "+ CordenadaColumna2.get("1.0","end")+""+
     "\n"+"Nombre de la matriz: "+comboExample.get()+"\n En el momento: "+
     str(now.date())+ " "+ str(now.time()))
     listaReporte.mostrar()
 
 def AgregarTriangulo():
-    print("")
+    n = matriz()
+    LimparFila1= 0
+    LimpiarFila2 =  0
+    LimpiarColumna1 = 0
+    LimpiarColumna2 = 0
+    EElementos = 0
+    LimparFila1 = CordenadaFila1.get("1.0","end")
+    LimpiarFila2 = CordenadaFila2.get("1.0","end")
+    LimpiarColumna1 = CordenadaColumna1.get("1.0","end")
+    LimpiarColumna2 = CordenadaColumna2.get("1.0","end")
+    EElementos = Elementos.get("1.0","end")
+
+    ContadorColumnas = 1
+    ContadorFilas  = 1
+
+    fila1 = int(LimparFila1) 
+    fila2 = int(LimpiarFila2) 
+    columna1= int(LimpiarColumna1) 
+    columna2 =int(LimpiarColumna2) 
+    #elementos = int(EElementos)
+
+   
+    MaximoHorizontal = columna1 
+    
+    nodo = lista.getNodo(comboExample.get())
+    NuevaImagen = nodo.imagen.rotacion()
+    print(NuevaImagen)
+
+    for k in NuevaImagen:
+        if(k == '*'):
+            if((ContadorFilas >= fila1 and ContadorFilas <= fila2) and (ContadorColumnas >= columna1 and ContadorColumnas <= MaximoHorizontal)):
+                print("contador FIla: "+ str(ContadorFilas) +" Contador Columnas: "+ str(ContadorColumnas))
+                n.insertar(ContadorFilas,ContadorColumnas,'*')
+                ContadorColumnas = ContadorColumnas + 1  
+            else:
+                #print("contador FIla: "+ str(ContadorFilas) +" Contador Columnas: "+ str(ContadorColumnas))
+                n.insertar(ContadorFilas,ContadorColumnas,'*')
+                ContadorColumnas = ContadorColumnas +1 
+             
+        if(k == '-'):
+            if((ContadorFilas >= fila1 and ContadorFilas <= fila2) and (ContadorColumnas >= columna1 and ContadorColumnas <= MaximoHorizontal)):
+                #print("maximo horizontal " + str(MaximoHorizontal))
+                
+                print("contador FIla: "+ str(ContadorFilas) +" Contador Columnas: "+ str(ContadorColumnas))
+                n.insertar(ContadorFilas,ContadorColumnas,'*')
+                ContadorColumnas = ContadorColumnas + 1
+            else:
+                n.insertar(ContadorFilas,ContadorColumnas,'-')
+                #print("contador FIla: "+ str(ContadorFilas) +" Contador Columnas: "+ str(ContadorColumnas))
+                ContadorColumnas = ContadorColumnas +1 
+        if(k == '\n'):
+            if(ContadorFilas >= fila1 and ContadorFilas <= fila2):
+                MaximoHorizontal = MaximoHorizontal + 1
+                 
+            ContadorFilas = ContadorFilas + 1
+            ContadorColumnas = 1
+
+    nombre = comboExample.get()+"Triangulo"
+    nodo = lista.insertarFinal(nombre,ContadorFilas,ContadorColumnas,n)
+    nodo.imagen = n  
+    listaCombo.append(comboExample.get()+'Triangulo')  
+    
+
+    lista.crearImagen()
+    listaReporte.insertar("Se agrego un Triangulo en: "+"Fila 1: "+ CordenadaFila1.get("1.0","end")+","+ 
+                                                  "columna 1: "+ CordenadaColumna1.get("1.0","end")+","+ 
+                                                  "fila 2: "+ CordenadaFila2.get("1.0","end")+","+ 
+                                                  "columna 2: "+ CordenadaColumna2.get("1.0","end")+","+
+    "\n"+"Nombre de la matriz: "+comboExample.get()+"\n En el momento: "+
+    str(now.date())+ " "+ str(now.time()))
+    listaReporte.mostrar()
+        
 
 def CargarReporte():
     webbrowser.open_new_tab('Reporte.html') 
