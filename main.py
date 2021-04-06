@@ -11,6 +11,7 @@ from tkinter.messagebox import showinfo
 from datetime import datetime
 import webbrowser
 import os
+from tkinter import messagebox
 
 now = datetime.now()
 listaReporte = ListaReporte()
@@ -529,7 +530,8 @@ def AgregarTriangulo():
     str(now.date())+ " "+ str(now.time()))
     listaReporte.mostrar()
         
-
+def DatosEstudiante():
+    messagebox.showinfo(message="UNIVERSISDAD SAN CARLOS DE GUATEMALA \n Jose Manuel Lara Elias \n Carne: 201344708", title="Datos Estudiante")
 def CargarReporte():
     webbrowser.open_new_tab('Reporte.html') 
 
@@ -624,7 +626,7 @@ filemenu.add_separator()
 filemenu.add_command(label="Salir", command=ventana.quit)
 
 filemenu1.add_command(label="Cargar Reporte", command=CargarReporte)
-filemenu2.add_command(label="Datos del Estudiante", command=CargarReporte)
+filemenu2.add_command(label="Datos del Estudiante", command=DatosEstudiante)
 filemenu2.add_command(label="Documentacion", command=AbrirDocumentacion)
 
 
