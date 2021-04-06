@@ -60,6 +60,7 @@ def abrir():
      nodo = lista.insertarFinal(nombre,filas,columnas,n)
      nodo.imagen = n  
      listaCombo.append(nombre)
+     
         
      
      
@@ -69,15 +70,27 @@ def abrir():
 
 def changeMonth():
     comboExample["values"] = listaCombo
+    comboExample1["values"] = listaCombo
                                    
+
+def callbackFunc2(event):
+
+     print(comboExample.get())
+     imagen2 = PhotoImage(file=comboExample1.get()+".gv.png")
+     
+     #imagen_zoom=imagen.zoom(2)
+   
+     etiqueta2.config(image=imagen2)
+     ventana.mainloop()
 
 def callbackFunc(event):
 
      print(comboExample.get())
      imagen = PhotoImage(file=comboExample.get()+".gv.png")
-     
+
      #imagen_zoom=imagen.zoom(2)
      etiqueta1.config(image=imagen)
+    
      ventana.mainloop()
 
 def RotacionTranspuesta():
@@ -541,6 +554,19 @@ def AbrirDocumentacion():
 
 def callbackFunc1(event):
     print("callbackFunc1")
+
+def Interseccion():
+    nodo = lista.getNodo(comboExample.get())
+    nodo2 = lista.getNodo(comboExample1.get())
+
+    NuevaImagen = nodo.imagen.rotacion()
+    NuevaImagen2 = nodo2.imagen.rotacion()
+
+    for k in zip(NuevaImagen,NuevaImagen2):
+        print(k[0]," ",k[1])
+
+
+
 ventana=Tk()
 #ventana.geometry('800x500')
 ancho_ventana = 1200
@@ -563,6 +589,9 @@ etiqueta2.config(padx=125,pady=125)
 
 boton=Button(ventana,text='Rotacion Horizontal',command=pulsar)
 boton.place(x=50,y=475)
+
+Interseccion=Button(ventana,text='Interseccion',command=Interseccion)
+Interseccion.place(x=50,y=505)
 
 botonRotacion=Button(ventana,text='Rotacion Vertical',command=RotacionVertical)
 botonRotacion.place(x=200,y=475)
@@ -639,6 +668,12 @@ comboExample = ttk.Combobox(ventana,
 comboExample.place(x=50,y=100)
 comboExample.current()
 comboExample.bind("<<ComboboxSelected>>", callbackFunc)
+
+comboExample1 = ttk.Combobox(ventana, 
+                            values=["hola"],postcommand=changeMonth)
+comboExample1.place(x=450,y=100)
+comboExample1.current()
+comboExample1.bind("<<ComboboxSelected>>", callbackFunc2)
 
 
 
