@@ -10,6 +10,7 @@ import tkinter as tk
 from tkinter.messagebox import showinfo
 from datetime import datetime
 import webbrowser
+import os
 
 now = datetime.now()
 listaReporte = ListaReporte()
@@ -532,6 +533,9 @@ def AgregarTriangulo():
 def CargarReporte():
     webbrowser.open_new_tab('Reporte.html') 
 
+def AbrirDocumentacion():
+    path = 'documentacion.pdf'
+    os.system(path)
 
 def callbackFunc1(event):
     print("callbackFunc1")
@@ -621,7 +625,7 @@ filemenu.add_command(label="Salir", command=ventana.quit)
 
 filemenu1.add_command(label="Cargar Reporte", command=CargarReporte)
 filemenu2.add_command(label="Datos del Estudiante", command=CargarReporte)
-filemenu2.add_command(label="Documentacion", command=CargarReporte)
+filemenu2.add_command(label="Documentacion", command=AbrirDocumentacion)
 
 
 menubar.add_cascade(label="Cargar Archivo", menu=filemenu, command=abrir)
